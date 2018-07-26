@@ -22,6 +22,7 @@
 @include("layouts.admin._header")
 
 <div class="container-fluid">
+    @include('vendor.ueditor.assets')
     @include("layouts.admin._errors")
     @include("layouts.admin._messages")
     @yield("content")

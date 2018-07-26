@@ -178,6 +178,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
 
+        Overtrue\LaravelUEditor\UEditorServiceProvider::class,
+
     ],
 
     /*

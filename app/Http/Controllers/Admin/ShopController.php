@@ -8,7 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShopController extends Controller
+class ShopController extends BaseController
 {
     //
     public function index(){
@@ -36,6 +36,13 @@ class ShopController extends Controller
         }
         return view('admin.shop.edit',compact('shopcates','shop'));
     }
+
+    /** 删除商品信息表
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
     public function del(Request $request,$id){
         $shop=Shop::find($id);
         $shop->delete();

@@ -6,7 +6,7 @@ use App\Models\ShopCategories;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class ShopCategoryController extends Controller
+class ShopCategoryController extends BaseController
 {
     //
     public function index(){

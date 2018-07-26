@@ -23,9 +23,4 @@ class Shop extends Model
         'notice',
         'discount',
     ];
-
-    public function user(){
-
-        return $this->hasOne(User::class,'id');
-    }
 }

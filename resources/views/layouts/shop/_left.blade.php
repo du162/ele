@@ -23,9 +23,9 @@
         </form>
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
+        <ul class="sidebar-menu tree" data-widget="tree">
             <li class="header">商户管家，详情查看</li>
-            <li class="active treeview">
+            <li class="active treeview menu-open">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>商户账号</span>
                     <span class="pull-right-container">
@@ -34,29 +34,42 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="active"><a href="{{route('user.add')}}"><i class="fa fa-circle-o"></i> 商户注册</a></li>
-                    <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> 商户账号注册表</a></li>
-                    <li><a href="{{route('shop.index')}}"><i class="fa fa-circle-o"></i> 商户账号信息表</a></li>
+                    <li><a href="{{route('user.index')}}"><i class="fa fa-circle-o"></i> 商户账号信息表</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="active treeview menu-open">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>Layout Options</span>
+                    <span>菜品分类</span>
                     <span class="pull-right-container">
               <span class="label label-primary pull-right">4</span>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                    <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed
-                            Sidebar</a></li>
+                    <li><a href="{{route('menuCate.index')}}"><i class="fa fa-circle-o"></i>菜品分类列表</a></li>
+                    <li><a href="{{route('menuCate.add')}}"><i class="fa fa-circle-o"></i>菜品分类添加</a></li>
+
+
+
+                </ul>
+            </li>
+            <li class="active treeview menu-open">
+                <a href="#">
+                    <i class="fa fa-files-o"></i>
+                    <span>菜品管理</span>
+                    <span class="pull-right-container">
+              <span class="label label-primary pull-right">4</span>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('menu.index')}}"><i class="fa fa-circle-o"></i>菜品列表</a></li>
+                    <li><a href="{{route('menu.add')}}"><i class="fa fa-circle-o"></i>添加菜品</a></li>
+
                 </ul>
             </li>
             <li>
-                <a href="pages/widgets.html">
-                    <i class="fa fa-th"></i> <span>Widgets</span>
+                <a href="{{route('activity.index')}}">
+                    <i class="fa fa-th"></i> <span>活动列表</span>
                     <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>
             </span>

@@ -24,6 +24,14 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function shop(){
+
+        return $this->belongsTo(Shop::class,'id');
+
+    }
+
+
+
     /**
      * The attributes that should be hidden for arrays.
      *

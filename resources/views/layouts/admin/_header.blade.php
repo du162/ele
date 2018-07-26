@@ -18,6 +18,8 @@
                  <li><a href="{{route('category.index')}}">商家分类<span class="sr-only">(current)</span></a></li>
                  <li><a href="{{route('shop.index')}}">商家管理<span class="sr-only">(current)</span></a></li>
                  <li><a href="{{route('audit.index')}}">商家审核<span class="sr-only">(current)</span></a></li>
+                 <li><a href="{{route('admin.index')}}">超级管理员<span class="sr-only">(current)</span></a></li>
+                <li><a href="{{route('activity.index')}}">活动列表<span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">集合 <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -33,21 +35,21 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                @auth
+                @auth("admin")
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">登陆 <span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{\Illuminate\Support\Facades\Auth::guard("admin")->user()->name}}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">查看信息</a></li>
-                            <li><a href="#">个人账户</a></li>
-                            <li><a href="#">修改记录</a></li>
+                            <li><a href="{{route('admin.info',\Illuminate\Support\Facades\Auth::guard("admin")->user()->id)}}">查看个人信息</a></li>
+                            <li><a href="{{route('admin.current',\Illuminate\Support\Facades\Auth::guard("admin")->user()->id)}}">修改当前密码</a></li>
+                            <li><a href="{{route('admin.reset')}}">重置当前密码</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="#">退出</a></li>
+                            <li><a href="{{route('admin.logout')}}">退出</a></li>
                         </ul>
                     </li>
                 @endauth
-
-                @guest
-                    <li><a href="#">登陆</a></li>
+                @guest("admin")
+                    <li><a href="{{route('admin.login')}}">登陆</a></li>
+                    <li><a href="{{route('admin.reg')}}">注册</a></li>
                 @endguest
             </ul>
         </div><!-- /.navbar-collapse -->
