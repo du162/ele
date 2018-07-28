@@ -44,9 +44,14 @@ class ShopController extends BaseController
      * @throws \Exception
      */
     public function del(Request $request,$id){
-        $shop=Shop::find($id);
+        $shop=Shop::findOrFail($id);
+
+        User::where('shop_id',$shop->id)->first()->delete();
+
         $shop->delete();
+
         $request->session()->flash('success','商户信息删除成功');
+
         return redirect()->route('shop.index');
     }
 

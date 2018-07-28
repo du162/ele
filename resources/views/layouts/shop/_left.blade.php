@@ -68,7 +68,7 @@
                 </ul>
             </li>
             <li>
-                <a href="{{route('activity.index')}}">
+                <a href="{{route('activity.show')}}">
                     <i class="fa fa-th"></i> <span>活动列表</span>
                     <span class="pull-right-container">
               <small class="label pull-right bg-green">new</small>

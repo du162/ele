@@ -180,6 +180,7 @@ return [
 
         Overtrue\LaravelUEditor\UEditorServiceProvider::class,
 
+        Mrgoon\AliSms\ServiceProvider::class
     ],
 
     /*

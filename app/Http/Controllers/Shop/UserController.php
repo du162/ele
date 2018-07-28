@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use MongoDB\Driver\Exception\LogicException;
+use Mrgoon\AliSms\AliSms;
 
 class UserController extends BaseController
 {
@@ -35,6 +36,22 @@ class UserController extends BaseController
                 return redirect()->back()->withInput();
             }
         }
+
+//        $config = [
+//            'access_key' => 'LTAIZEmIuyEapocv',
+//            'access_secret' => '4L2DWrcrtHRJK6nKkaO9juY3jQCTBZ',
+//            'sign_name' => '杜航',
+//        ];
+//
+//        $aliSms = new Mrgoon\AliSms\AliSms();
+//
+//        $response = $aliSms->sendSms('15723141329', 'SMS_140685113', ['code'=> '1234'], $config);
+//        $aliSms = new AliSms();
+//
+//        $response = $aliSms->sendSms('15736392964', 'SMS_140685113', ['code'=> rand(100000,999999)]);
+//
+//        dd($response);
+
         return view('shop.user.login');
     }
 
@@ -142,7 +159,6 @@ class UserController extends BaseController
                 $user = $request->post();
                 $user['password'] = bcrypt($user['password']);
                 $user['password'] = bcrypt($user['password']);
-                dd($user);
                 $userid = User::create($user);
                 if ($userid) {
                     $shop = $request->input();
@@ -152,9 +168,8 @@ class UserController extends BaseController
                     $user['shop_id'] = $shopid->id;
                     $user->save();
                     DB::commit();
-                    $request->session()->flash('danger', '账户添加成功');
+                    $request->session()->flash('info', '账户添加成功');
                     return redirect()->route('user.index');
-
                 }
             } catch (LogicException $e) {
 

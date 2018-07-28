@@ -23,5 +23,5 @@
             <td>{{date('Y-m-d',$act->end_time)}}</td>
         </tr>
     </table>
-    <a href="{{route('activity.index')}}" class="btn btn-info">返回</a>
+    <a href="{{route('activity.show')}}" class="btn btn-info">返回</a>
 @endsection
