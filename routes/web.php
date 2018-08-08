@@ -12,15 +12,18 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 
 //测试
-Route::get('/mail', function () {
-    $order = \App\Models\Order::find(17);
-    return new \App\Mail\OrderShipped($order);
-});
+//Route::get('/mail', function () {
+//    $order = \App\Models\Order::find(17);
+//    return new \App\Mail\OrderShipped($order);
+//});
+
+
+
 
 Route::domain('admin.ele.com')->namespace('Admin')->group(function () {
     Route::get('shop_category/ss', "ShopCategoryController@ss");
