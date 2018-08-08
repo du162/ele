@@ -15,7 +15,7 @@ class BaseController extends Controller
 //        $this->middleware('auth:user')->except("login",'reg');
 //
         $this->middleware('auth', [
-            'except' => ['login'],
+            'except' => ['login','add'],
         ]);
 //        $this->middleware('guest', [
 //            'only' => ['login'],

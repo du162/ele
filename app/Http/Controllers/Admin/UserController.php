@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\OrderShipped;
 use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends BaseController
 {
@@ -25,6 +27,13 @@ class UserController extends BaseController
         $user->save();
         $shop->status = 1;
         $shop->save();
+
+//        $order =\App\Models\Order::find(17);
+
+//        dd($order);
+
+        Mail::to($user)->send(new OrderShipped($user));
+
         $request->session()->flash('success', '启用成功');
         return redirect()->route('audit.index');
 

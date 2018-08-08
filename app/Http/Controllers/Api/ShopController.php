@@ -42,7 +42,8 @@ class ShopController extends Controller
                 "send_time" => 30,
                 "evaluate_details" => "不怎么好吃"
             ],
-            ["user_id" => 12344,
+            [
+                "user_id" => 12344,
                 "username" => "w******k",
                 "user_img" => "http://www.homework.com/images/slider-pic4.jpeg",
                 "time" => "2017-2-22",

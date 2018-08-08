@@ -25,6 +25,16 @@
         </div>
         <br><br>
         <div class="form-group">
+            <b class="col-sm-2 control-label">权限</b>
+            <div class="col-sm-8">
+                @foreach($roles as $role)
+                    <input type="checkbox" name="role[]" value="{{$role->name}}">{{$role->name}}
+                @endforeach
+                <br>
+            </div>
+        </div>
+        <br><br>
+        <div class="form-group">
             <b class="col-sm-2 control-label">验证码</b>
             <div class="col-sm-8">
                 <input id="captcha" class="form-control" name="captcha" >

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 
 class AdminController extends BaseController
@@ -18,20 +19,24 @@ class AdminController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function reg(Request $request){
+
         if ($request->isMethod('post')) {
             //获取参数
             $admin=$request->input();
             //密码加密
             $admin['password']=bcrypt($admin['password']);
 
-            Admin::create($admin);
+            $ad=Admin::create($admin);
+            $ad->syncRoles($request->post('role'));
 
             $request->session()->flash('info','您的超级管理注册成功,请来个五星好评');
 
             return redirect()->route('admin.reg');
 
         }
-        return view('admin.admin.reg');
+        //得到所有权限
+        $roles=Role::all();
+        return view('admin.admin.reg',compact('roles'));
     }
 
     /**登陆后台管理
@@ -145,10 +150,14 @@ class AdminController extends BaseController
 
             $admin->update($admins);
 
+            $admin->syncRoles($request->post('role'));
+
             $request->session()->flash('info','您的超级管理修改成功');
+
             return redirect()->route('admin.index');
         }
-        return view('admin.admin.edit',compact('admin'));
+        $roles=Role::all();
+        return view('admin.admin.edit',compact('admin','roles'));
     }
 
     /**删除账号
